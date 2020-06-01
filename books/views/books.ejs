@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Book store</title>
+</head>
+
+<body>
+  <header class="inner">
+    <h2><a href="/"><i class="fas fa-book"></i>
+       Книжковий магазин</a></h2>
+    <nav>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/books">Усі книги</a>
+        </li>
+        <li>
+          <a href="/books/add">Додати книгу</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <br>
+  <br>
+  <form class="container" action="/books/sort" class="sort-form">
+    <input name="sortBy" type="radio" value="author" checked="checked"> автор
+    <input name="sortBy" type="radio" value="title"> назва
+    <input name="sortBy" type="radio" value="year"> рік
+    <input type="submit" value="sort">
+  </form>
+
+  <div class="container">
+    <section id="books" class="container">
+      <h1>Книги</h1>
+      <% let i=0
+      for(book of books){ %>
+      <h4><a href="/books/bookDetail/<%= book.id %>"><%=book.title%></a></h4>
+      <img src= <%=book.imgString %>>
+      <label> <%=book.author%></label>
+      <label> <%=book.year%> рік</label>
+      <label>Ціна: <%=book.price%> грн.</label>
+      <!-- <span> <%=book.description%></span><br> -->
+      <a href="/books/edit/<%= book.id %>">Редагувати</a>
+      <a href="/books/delete/<%= book.id %>">Видалити</a>
+      <%}%>
+    </section>
+  </div>
+</body>
+
+</html>

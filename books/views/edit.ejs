@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Світ книг</title>
+</head>
+
+<body>
+    <header class="inner">
+        <h2><a href="/"><i class="fas fa-book"></i>
+                Світ книг</a></h2>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/books">Усі книги</a>
+                </li>
+                <li>
+                    <a href="/books/add">Додати книгу</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="container">  <input type='file' accept='image/*' onchange='openFile(event)'><br>
+
+    <form action="/books/edit" method="POST">
+        <img src=<%= book.imgString %> id='output'>
+        <input type="hidden" id="imgString" name="imgString" value=<%= book.imgString %> required>
+
+        <div><input type="hidden" id="id" name="id" placeholder="id" value="<%= book.id %>"></div>
+        <label>Назва:<div><input type="text" id="title" name="title" placeholder="Назва" value="<%= book.title %>"
+                    required></div></label>
+        <label>Автор:<div><input type="text" id="author" name="author" placeholder="Автор" value="<%= book.author %>"
+                    required></div></label>
+        <label>Опис:<div><input type="text" id="description" name="description" placeholder="Опис"
+                    value="<%= book.description %>" required></div></label>
+        <label>Рік:<div><input type="number" id="year" name="year" placeholder="Рік" value="<%= book.year %>" required>
+            </div></label>
+        <label>Ціна:<div><input type="number" id="price" name="price" placeholder="Ціна" value="<%= book.price %>"
+                    required></div></label>
+        <div><input type="submit" value="Зберегти"></div>
+    </form></div>
+
+  
+</body>
+<script>
+    var openFile = function (event) {
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = function () {
+            var dataURL = reader.result;
+            var output = document.getElementById('output');
+            output.src = dataURL;
+            let imgString = document.getElementById('imgString');
+            imgString.value = dataURL;
+        };
+        reader.readAsDataURL(input.files[0]);
+    };
+</script>
+
+</html>

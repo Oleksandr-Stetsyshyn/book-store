@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Книжковий магазин</title>
+</head>
+
+<body>
+    <header class="inner">
+        <h2><a href="/"><i class="fas fa-book"></i>
+                Книжковий магазин</a></h2>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/books">Всі книги</a>
+                </li>
+                <li>
+                    <a href="/books/add">Додати книгу</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h3>Hello <%=user%></h3>
+        <a href="/users/logout">logout</a>
+    </div>
+
+</body>
+
+</html>

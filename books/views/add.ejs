@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Книжковий магазин</title>
+</head>
+
+<body>
+  <header class="inner">
+    <h2><a href="/"><i class="fas fa-book"></i>
+      Книжковий магазин</a></h2>
+    <nav>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/books">Всі книги</a>
+        </li>
+        <li>
+          <a href="/books/add">Додати книгу</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <form class="container" action="/books/add" method="POST">
+
+    
+    <div ><input type="hidden" id="imgString" name="imgString" required></div>
+
+    <input type='file' accept='image/*' onchange='openFile(event)'><br>
+    <img id='output'>
+
+    <div><input type="text" id="title" name="title" placeholder="Назва" required></div>
+    <div><input type="text" id="author" name="author" placeholder="Автор" required></div>
+    <div><input type="text" id="description" name="description" placeholder="Опис" required></div>
+    <div><input type="number" id="year" name="year" placeholder="Рік" required></div>
+    <div><input type="number" id="price" name="price" placeholder="Ціна" required></div>
+    <div><input type="submit" value="Додати книгу"></div>
+  </form>
+</body>
+
+<script>
+
+  var openFile = function(event) {
+    var input = event.target;
+    var reader = new FileReader();
+    reader.onload = function(){
+      var dataURL = reader.result;
+      var output = document.getElementById('output');
+      output.src = dataURL;
+      
+      let imgString = document.getElementById('imgString');
+      imgString.value = dataURL;
+    };
+    reader.readAsDataURL(input.files[0]);
+  };
+</script>
+
+</html>
